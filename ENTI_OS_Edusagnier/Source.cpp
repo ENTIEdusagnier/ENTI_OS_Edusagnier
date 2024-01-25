@@ -106,10 +106,22 @@ void main()
 				{
 					cout << "El numero insertado es correcto" << endl;
 					num_menu_right = true;
+
+					switch (user_select_option)
+					{
+					case '1':
+
+						break;
+
+					default:
+						break;
+					}
+
 				}
 				else
 				{
 					cout << "El numero no esta entre el 1-5" << endl;
+					num_menu_right = false;
 				}
 
 			}
