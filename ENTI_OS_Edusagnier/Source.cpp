@@ -14,8 +14,9 @@ void main()
 {
 
 	string menu[5] = { " Gestionar Usuarios"," Cambiar de usuario"," Gestionar directorios"," Gestionar Tareas"," Salir" };
-
-
+	string menu_gestionar_usuario[4] = { " Crear Usuario"," Modificar Password"," Eliminar Usuario"," Volver" };
+	string menu_gestionar_directorios[5] = { " Ver Directorios"," Crear Directorios"," Renombrar Directorios"," Eliminar Directorios"," Volver" };
+	string menu_gestionar_tareas[4] = { " Crear Tarea"," Mostrar Siguiente Tarea"," Completar Tarea"," Volver" };
 
 	vector <string> users;
 	vector <string> passwords;
@@ -86,10 +87,15 @@ void main()
 	bool menu_principal = false;
 	bool num_menu_right = false;
 
-	//while (!menu_principal)
+	bool volver_gestionar_usuario = false;
+	bool volver_gestionar_directorios = false;
+	bool volver_gestionar_tareas = false;
+
+	while (!menu_principal)
 	{
 		system("cls");
 		cout << "Estas logguedo como " << user_insert << endl;
+
 		if (user_insert == "admin")
 		{
 			for (int i = 0; i <= 4; i++)
@@ -97,6 +103,7 @@ void main()
 				cout << i + 1 << "-" << menu[i] << endl;
 			}
 
+			num_menu_right = false;
 			while (!num_menu_right)
 			{
 				cout << endl << "Inserta el numero que quieres" << endl;
@@ -107,25 +114,48 @@ void main()
 					cout << "El numero insertado es correcto" << endl;
 					num_menu_right = true;
 
-					switch (user_select_option)
-					{
-					case '1':
-
-						break;
-
-					default:
-						break;
-					}
-
 				}
 				else
 				{
 					cout << "El numero no esta entre el 1-5" << endl;
-					num_menu_right = false;
 				}
 
 			}
 
+			if (user_select_option == '1')
+			{
+				while (!volver_gestionar_usuario)
+				{
+					system("cls");
+					bool insert_menu_1 = false;
+					while (!insert_menu_1)
+					{
+						char insert_gestionar;
+
+						cout << "Estas logguedo como " << user_insert << endl;
+						for (int i = 0; i < 4; i++)
+						{
+							cout << i + 1 << "-" << menu_gestionar_usuario[i] << endl;
+						}
+						cout << endl;
+						cout << endl << "Inserta el numero que quieres" << endl;
+						cin >> insert_gestionar;
+
+						if ((int)user_select_option > 48 && (int)user_select_option < 53)
+						{
+							cout << "El numero insertado es correcto" << endl;
+							insert_menu_1 = true;
+
+						}
+						else
+						{
+							cout << "El numero no esta entre el 1-4" << endl;
+						}
+					}
+					
+
+				}
+			}
 		}
 		else
 		{
@@ -151,8 +181,6 @@ void main()
 			}
 		}
 	}
-
-
 
 
 
