@@ -308,11 +308,54 @@ void main()
 			{
 				system("cls");
 				volver_gestionar_directorios = false;
+
+
 				while (!volver_gestionar_directorios)
 				{
 					for (int i = 0; i < 5; i++)
 					{
-						cout << menu_gestionar_directorios[i] << endl;
+						cout << i + 1 << '-' << menu_gestionar_directorios[i] << endl;
+					}
+
+					bool numero_directorio_right = false;
+					char user_directory;
+
+					while (!numero_directorio_right)
+					{
+						cout << "Introduce que opcion quieres" << endl;
+						cin >> user_directory;
+
+
+						if ((int)user_directory > 48 && (int)user_directory < 54)
+						{
+							cout << "El numero insertado es correcto" << endl;
+							numero_directorio_right = true;
+
+						}
+						else
+						{
+							cout << "El numero no esta entre el 1-5" << endl;
+						}
+					}
+					if (user_directory == '5')
+					{
+						volver_gestionar_directorios = true;
+					}
+
+
+				}
+
+
+			}
+			if (user_select_option == '4') // Cambia de usuario
+			{
+				system("cls");
+				volver_gestionar_tareas = false;
+				while (!volver_gestionar_tareas)
+				{
+					for (int i = 0; i < 4; i++)
+					{
+						cout << menu_gestionar_tareas[i] << endl;
 					}
 
 
