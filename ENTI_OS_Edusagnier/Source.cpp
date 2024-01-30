@@ -97,9 +97,9 @@ void main()
 		system("cls");
 		cout << "Estas logguedo como " << user_insert << endl;
 
-		if (user_insert == "admin")
+		if (user_insert == "admin") //Detecta si el usuario iniciado es admin o no.
 		{
-			for (int i = 0; i <= 4; i++)
+			for (int i = 0; i <= 4; i++) //Saca el menu de admin que son los 5 (0-4)
 			{
 				cout << i + 1 << "-" << menu[i] << endl;
 			}
@@ -303,10 +303,22 @@ void main()
 				system("cls");
 
 			}
-			
+
 			if (user_select_option == '3') // Cambia de usuario
 			{
 				system("cls");
+				volver_gestionar_directorios = false;
+				while (!volver_gestionar_directorios)
+				{
+					for (int i = 0; i < 5; i++)
+					{
+						cout << menu_gestionar_directorios[i] << endl;
+					}
+
+
+
+
+				}
 
 
 			}
@@ -323,9 +335,9 @@ void main()
 
 
 		}
-		else
+		else // Si no es admin
 		{
-			for (int i = 1; i <= 4; i++)
+			for (int i = 1; i <= 4; i++) //Saca el menu desde 1-4 (Saca los 4 ultimos)
 			{
 				cout << i << "-" << menu[i] << endl;
 			}
@@ -347,14 +359,5 @@ void main()
 			}
 		}
 	}
-
-
-
-
-
-
-
-
-
 
 }
