@@ -50,7 +50,7 @@ void main()
 	bool volver_gestionar_tareas = false;
 
 	while (!menu_principal)
-	{		
+	{
 		while (!user_insert_right)
 		{
 			bool user_exsist = false;
@@ -195,8 +195,8 @@ void main()
 										passwords.push_back(new_password_verification);
 										cout << "Usuario Creado" << endl;
 
-										string nombre_compuesto_new_user = "tareas_" + new_user; // Crearemos un vector de tareas siempre que se cree un usuario
-										queue <string> nombre_compuesto_new_user; //Aqui lo creemos con el nombre compuesto.
+										/*string nombre_compuesto_new_user = "tareas_" + new_user; // Crearemos un vector de tareas siempre que se cree un usuario
+										queue <string> nombre_compuesto_new_user; //Aqui lo creemos con el nombre compuesto.*/
 
 										user_created = true;
 									}
@@ -306,11 +306,10 @@ void main()
 
 			}
 
-			if (user_select_option == '3') // Cambia de usuario
+			if (user_select_option == '3') // Gestor de Directorios
 			{
 				system("cls");
 				volver_gestionar_directorios = false;
-
 
 				while (!volver_gestionar_directorios)
 				{
@@ -341,16 +340,7 @@ void main()
 					}
 					if (user_directory == '1')
 					{
-												
-						string compueso_tareas = "tareas_" + user_insert;
-						string tarea_insertar;
-
-						cout << "Que tarea quieres insertar" << endl;
-						cin >> tarea_insertar;
-
-						queue <string> compueso_tareas;
-
-						compueso_tareas.push(tarea_insertar);
+						cout << "Prova" << endl;
 					}
 
 					if (user_directory == '5')
@@ -367,32 +357,62 @@ void main()
 			{
 				system("cls");
 				volver_gestionar_tareas = false;
+
 				while (!volver_gestionar_tareas)
 				{
 					for (int i = 0; i < 4; i++)
 					{
-						cout << menu_gestionar_tareas[i] << endl;
+						cout << i + 1 << '-' << menu_gestionar_tareas[i] << endl;
+					}
+					bool numero_tareas_right = false;
+					char user_tarea;
+
+					while (!numero_tareas_right)
+					{
+						cout << "Introduce que opcion quieres" << endl;
+						cin >> user_tarea;
+
+
+						if ((int)user_tarea > 48 && (int)user_tarea < 53)
+						{
+							cout << "El numero insertado es correcto" << endl;
+							numero_tareas_right = true;
+
+						}
+						else
+						{
+							cout << "El numero no esta entre el 1-4" << endl;
+						}
+					}
+					if (user_tarea == '1')
+					{
+						/*
+						string compueso_tareas = "tareas_" + user_insert;
+						string tarea_insertar;
+
+						cout << "Que tarea quieres insertar" << endl;
+						cin >> tarea_insertar;
+
+						queue <string> compueso_tareas;
+
+						compueso_tareas.push(tarea_insertar);*/
 					}
 
 
+					if (user_tarea == '4')
+					{
+						volver_gestionar_tareas = true;
+					}
 
 
 				}
-
-
 			}
-
-
 			if (user_select_option == '5') // Entra al menu de gestionar usuario
 			{
 
 				menu_principal = true;
 
 			}
-
-
-
-
 		}
 		else // Si no es admin
 		{
@@ -416,7 +436,17 @@ void main()
 				}
 
 			}
-		}
-	}
+			if (user_select_option == '1')
+			{
+				user_insert_right = false;
+				system("cls");
+			}
+			if (user_select_option == '2')
+			{
+				cout << "Prova" << endl;
+			}
 
+		}
+
+	}
 }
