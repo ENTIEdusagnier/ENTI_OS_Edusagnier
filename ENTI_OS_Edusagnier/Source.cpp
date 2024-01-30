@@ -21,6 +21,8 @@ void main()
 	vector <string> users;
 	vector <string> passwords;
 
+	queue <string> tareas_admin;
+
 	users.push_back("admin");
 	passwords.push_back("admin");
 
@@ -39,10 +41,6 @@ void main()
 	bool user_insert_right = false;
 
 
-
-
-
-
 	char user_select_option;
 	bool menu_principal = false;
 	bool num_menu_right = false;
@@ -52,7 +50,7 @@ void main()
 	bool volver_gestionar_tareas = false;
 
 	while (!menu_principal)
-	{
+	{		
 		while (!user_insert_right)
 		{
 			bool user_exsist = false;
@@ -196,6 +194,10 @@ void main()
 										users.push_back(new_user);
 										passwords.push_back(new_password_verification);
 										cout << "Usuario Creado" << endl;
+
+										string nombre_compuesto_new_user = "tareas_" + new_user; // Crearemos un vector de tareas siempre que se cree un usuario
+										queue <string> nombre_compuesto_new_user; //Aqui lo creemos con el nombre compuesto.
+
 										user_created = true;
 									}
 									else
@@ -337,6 +339,20 @@ void main()
 							cout << "El numero no esta entre el 1-5" << endl;
 						}
 					}
+					if (user_directory == '1')
+					{
+												
+						string compueso_tareas = "tareas_" + user_insert;
+						string tarea_insertar;
+
+						cout << "Que tarea quieres insertar" << endl;
+						cin >> tarea_insertar;
+
+						queue <string> compueso_tareas;
+
+						compueso_tareas.push(tarea_insertar);
+					}
+
 					if (user_directory == '5')
 					{
 						volver_gestionar_directorios = true;
