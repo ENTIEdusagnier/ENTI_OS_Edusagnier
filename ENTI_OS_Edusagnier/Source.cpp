@@ -430,7 +430,7 @@ void main()
 						std::cin.ignore();
 
 						cout << "Que tarea queres insertar" << endl;
-						;
+						
 						std::getline(std::cin, tarea_insertar);
 
 						for (int i = 0; i < users.size(); i++)
@@ -446,7 +446,7 @@ void main()
 					{
 						for (int i = 0; i < users.size(); i++)
 						{
-							
+
 							if (users[i] == user_insert)
 							{
 								if (tareas[i].size() != 0)
@@ -465,7 +465,7 @@ void main()
 					}
 					if (user_tarea == '3')
 					{
-						cout << "La tarea completada" << endl;
+						cout << "La tarea completada:" << endl;
 						for (int i = 0; i < users.size(); i++)
 						{
 							if (users[i] == user_insert)
@@ -475,15 +475,17 @@ void main()
 
 								tareas[i].pop();
 
+								if (tareas[i].size() != 0)
+								{
+									cout << "La proxima tarea sera: " << tareas[i].front() << endl << endl;
+								}
+								else
+								{
+									cout << "No quedan mas tareas" << endl;
+									cout << endl;
+								}
 							}
-							if (tareas[i].size() != 0)
-							{
-								cout << "La proxima tarea sera: " << tareas[i].front() << endl;
-							}
-							else
-							{
-								cout << "No quedan mas tareas" << endl;
-							}
+
 						}
 					}
 
