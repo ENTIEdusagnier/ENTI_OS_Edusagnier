@@ -6,6 +6,7 @@
 #include <stack>
 #include <vector>
 #include <list>
+#include <string>
 
 using namespace std; //Permite no utilizar std::
 
@@ -21,13 +22,18 @@ void main()
 	vector <string> users;
 	vector <string> passwords;
 
-	queue <string> tareas_admin;
+	vector  <queue <string>> tareas;
+	queue <string> cola;
+
+	tareas.push_back(cola); // Creamos un espacio para admin
 
 	users.push_back("admin");
 	passwords.push_back("admin");
 
 	users.push_back("edusagnier");
 	passwords.push_back("123456789");
+	tareas.push_back(cola);
+
 
 	string user_insert;
 	string password_insert;
@@ -38,6 +44,7 @@ void main()
 
 	cout << endl << endl;
 
+	//Esto puede ir dentro del while principal?
 	bool user_insert_right = false;
 
 
@@ -51,16 +58,16 @@ void main()
 
 	while (!menu_principal)
 	{
-		while (!user_insert_right)
+		while (!user_insert_right) // Inicio de Session correcto
 		{
 			bool user_exsist = false;
 
-			cout << "Introduce Usuario: " << endl;
+			cout << "Introduce Usuario: " << endl; // Introduce el usuario para inicar session
 			cin >> user_insert;
 
 			cout << endl;
 
-			cout << "Introduce Password: " << endl;
+			cout << "Introduce Password: " << endl; // Introduce la password para inicar session
 			cin >> password_insert;
 
 
@@ -70,7 +77,7 @@ void main()
 				if (users[i] == user_insert)
 				{
 					cout << "Users Exists" << endl; //DEBUG
-					user_exsist = true;
+					user_exsist = true; // Si existe no sacara el mensaje de que no exsiste
 
 					if (password_insert == passwords[i])
 					{
@@ -84,11 +91,11 @@ void main()
 					}
 
 				}
-				if (!user_exsist)
-				{
-					system("cls");
-					cout << "Wrong User" << endl;
-				}
+			}
+			if (!user_exsist) //Deberia ir fuera del for no?
+			{
+				system("cls");
+				cout << "Wrong User" << endl;
 			}
 		}
 
@@ -102,15 +109,16 @@ void main()
 				cout << i + 1 << "-" << menu[i] << endl;
 			}
 
-			num_menu_right = false;
-			while (!num_menu_right)
+			num_menu_right = false; //Resetea la variable por si repite.
+
+			while (!num_menu_right) //Para verificar que introduce un numero del 1-5
 			{
 				cout << endl << "Inserta el numero que quieres" << endl;
 				cin >> user_select_option;
 
 				if ((int)user_select_option > 48 && (int)user_select_option < 54)
 				{
-					cout << "El numero insertado es correcto" << endl;
+					cout << "El numero insertado es correcto" << endl; //DEBUG
 					num_menu_right = true;
 
 				}
@@ -193,10 +201,10 @@ void main()
 										cout << "Passwords Coinciden" << endl;
 										users.push_back(new_user);
 										passwords.push_back(new_password_verification);
-										cout << "Usuario Creado" << endl;
 
-										/*string nombre_compuesto_new_user = "tareas_" + new_user; // Crearemos un vector de tareas siempre que se cree un usuario
-										queue <string> nombre_compuesto_new_user; //Aqui lo creemos con el nombre compuesto.*/
+										tareas.push_back(cola); // Creamos un espacio para las tareas para este usuario
+
+										cout << "Usuario Creado" << endl;
 
 										user_created = true;
 									}
@@ -207,6 +215,7 @@ void main()
 								}
 							}
 						}
+
 						if (insert_gestionar == '2') // Para Modificar password
 						{
 							bool modify_correctly = false;
@@ -232,7 +241,7 @@ void main()
 										cout << "Inserta la password que quieres que tenga el usuario" << endl;
 										cin >> password_new_modify;
 
-										passwords[i] = password_new_modify;
+										passwords.insert(passwords.begin() + i, password_new_modify);
 
 										cout << "Password Cambiada" << endl;
 
@@ -247,6 +256,7 @@ void main()
 
 							}
 						}
+
 						if (insert_gestionar == '3') //Borrar Usuario
 						{
 							bool deleted_correctly = false;
@@ -254,8 +264,9 @@ void main()
 							while (!deleted_correctly)
 							{
 								string user_delete;
-								string verification;
+								char verification;
 								bool user_exisist_delete = false;
+								bool verification_correct = false;
 
 								cout << "Inserta el usuario que quieres eliminar" << endl;
 								cin >> user_delete;
@@ -268,6 +279,22 @@ void main()
 										cout << "Users Exists" << endl;
 										user_exisist_delete = true;
 										cout << endl;
+
+										while (!verification_correct)
+										{
+											cout << "Seguro que lo quieres eliminar S/N" << endl;
+											cin >> verification;
+
+											if ((int)verification == 83 || (int)verification == 78) // Verificamos en la tabla ASCII si es un Y/N
+											{
+												cout << "verificacion correcta." << endl;
+												verification_correct = true;
+											}
+											else
+											{
+												cout << "No has introducido un character correcto (S / N)" << endl;
+											}
+										}
 
 										users.erase(users.begin() + i); //Boramos el usuario
 										passwords.erase(passwords.begin() + i);//Boramos la contraseña
@@ -338,9 +365,21 @@ void main()
 							cout << "El numero no esta entre el 1-5" << endl;
 						}
 					}
-					if (user_directory == '1')
+					if (user_directory == '1') //Ver Directorio
 					{
-						cout << "Prova" << endl;
+						//Ver Directorio
+					}
+					if (user_directory == '2') //Crear Directorio
+					{
+						//Ver Directorio
+					}
+					if (user_directory == '3') //Renombrar Directorio
+					{
+						//Ver Directorio
+					}
+					if (user_directory == '4') //Eliminar Directorio
+					{
+						//Ver Directorio
 					}
 
 					if (user_directory == '5')
@@ -353,7 +392,7 @@ void main()
 
 
 			}
-			if (user_select_option == '4') // Cambia de usuario
+			if (user_select_option == '4') // Gestionar Tareas
 			{
 				system("cls");
 				volver_gestionar_tareas = false;
@@ -384,20 +423,69 @@ void main()
 							cout << "El numero no esta entre el 1-4" << endl;
 						}
 					}
+
 					if (user_tarea == '1')
 					{
-						/*
-						string compueso_tareas = "tareas_" + user_insert;
 						string tarea_insertar;
+						std::cin.ignore();
 
-						cout << "Que tarea quieres insertar" << endl;
-						cin >> tarea_insertar;
+						cout << "Que tarea queres insertar" << endl;
+						;
+						std::getline(std::cin, tarea_insertar);
 
-						queue <string> compueso_tareas;
-
-						compueso_tareas.push(tarea_insertar);*/
+						for (int i = 0; i < users.size(); i++)
+						{
+							if (users[i] == user_insert)
+							{
+								tareas[i].push(tarea_insertar);
+							}
+						}
+						cout << "Tarea Insertada!" << endl;
 					}
+					if (user_tarea == '2')
+					{
+						for (int i = 0; i < users.size(); i++)
+						{
+							
+							if (users[i] == user_insert)
+							{
+								if (tareas[i].size() != 0)
+								{
+									cout << "Tu siguiente tarea es;" << endl;
+									string tarea = tareas[i].front();
+									cout << tarea << endl;
+								}
+								else
+								{
+									cout << "No tienes Tareas Pendientes" << endl;
+								}
+							}
+						}
 
+					}
+					if (user_tarea == '3')
+					{
+						cout << "La tarea completada" << endl;
+						for (int i = 0; i < users.size(); i++)
+						{
+							if (users[i] == user_insert)
+							{
+								string tarea = tareas[i].front();
+								cout << tarea << endl;
+
+								tareas[i].pop();
+
+							}
+							if (tareas[i].size() != 0)
+							{
+								cout << "La proxima tarea sera: " << tareas[i].front() << endl;
+							}
+							else
+							{
+								cout << "No quedan mas tareas" << endl;
+							}
+						}
+					}
 
 					if (user_tarea == '4')
 					{
@@ -420,6 +508,7 @@ void main()
 			{
 				cout << i << "-" << menu[i] << endl;
 			}
+			num_menu_right = false;
 			while (!num_menu_right)
 			{
 				cout << endl << "Inserta el numero que quieres" << endl;
@@ -444,6 +533,12 @@ void main()
 			if (user_select_option == '2')
 			{
 				cout << "Prova" << endl;
+			}
+
+			if (user_select_option == '4')
+			{
+				menu_principal = true;
+
 			}
 
 		}
