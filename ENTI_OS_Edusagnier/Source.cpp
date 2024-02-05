@@ -548,6 +548,122 @@ void main()
 			{
 				cout << "Prova" << endl;
 			}
+			if (user_select_option == '3')
+			{
+				system("cls");
+				volver_gestionar_tareas = false;
+				cout << "Estas logguedo como " << user_insert << endl;
+
+				while (!volver_gestionar_tareas)
+				{
+					for (int i = 0; i < 4; i++)
+					{
+						cout << i + 1 << '-' << menu_gestionar_tareas[i] << endl;
+					}
+					bool numero_tareas_right = false;
+					char user_tarea;
+
+					while (!numero_tareas_right)
+					{
+						cout << "Introduce que opcion quieres" << endl;
+						cin >> user_tarea;
+
+
+						if ((int)user_tarea > 48 && (int)user_tarea < 53)
+						{
+							cout << "El numero insertado es correcto" << endl;
+							numero_tareas_right = true;
+
+						}
+						else
+						{
+							cout << "El numero no esta entre el 1-4" << endl;
+						}
+					}
+
+					if (user_tarea == '1')
+					{
+						string tarea_insertar;
+						std::cin.ignore();
+
+						cout << "Que tarea queres insertar" << endl;
+
+						std::getline(std::cin, tarea_insertar);
+
+						for (int i = 0; i < users.size(); i++)
+						{
+							if (users[i] == user_insert)
+							{
+								tareas[i].push(tarea_insertar);
+							}
+						}
+						cout << "Tarea Insertada!" << endl;
+						Sleep(3000); // Espera 5 SEG
+						system("cls"); //Limpia la terminal
+					}
+					if (user_tarea == '2')
+					{
+						for (int i = 0; i < users.size(); i++)
+						{
+
+							if (users[i] == user_insert)
+							{
+								if (tareas[i].size() != 0)
+								{
+									cout << "Tu siguiente tarea es;" << endl;
+									string tarea = tareas[i].front();
+									cout << tarea << endl;
+									Sleep(4000); // Espera 5 SEG
+									system("cls"); //Limpia la terminal
+								}
+								else
+								{
+									cout << "No tienes Tareas Pendientes" << endl;
+									Sleep(3000); // Espera 5 SEG
+									system("cls"); //Limpia la terminal
+								}
+							}
+						}
+
+					}
+					if (user_tarea == '3')
+					{
+						cout << "La tarea completada:" << endl;
+						for (int i = 0; i < users.size(); i++)
+						{
+							if (users[i] == user_insert)
+							{
+								string tarea = tareas[i].front();
+								cout << tarea << endl;
+
+								tareas[i].pop();
+
+								if (tareas[i].size() != 0)
+								{
+									cout << "La proxima tarea sera: " << tareas[i].front() << endl << endl;
+									Sleep(3000); // Espera 5 SEG
+									system("cls"); //Limpia la terminal 
+								}
+								else
+								{
+									cout << "No quedan mas tareas" << endl;
+									cout << endl;
+									Sleep(3000); // Espera 5 SEG 
+									system("cls"); //Limpia la terminal 
+								}
+							}
+
+						}
+					}
+
+					if (user_tarea == '4')
+					{
+						volver_gestionar_tareas = true;
+					}
+
+
+				}
+			}
 
 			if (user_select_option == '4')
 			{
