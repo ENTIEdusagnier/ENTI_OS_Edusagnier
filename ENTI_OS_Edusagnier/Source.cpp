@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <windows.h> // Para hacer un Sleep para poder dejar un tiempo y borrar la terminal. (Sacado de mi proyecto hundir la flota).
+
 #include <queue>
-#include <stack>
 #include <vector>
-#include <list>
 #include <string>
 
 using namespace std; //Permite no utilizar std::
@@ -337,6 +337,7 @@ void main()
 			{
 				system("cls");
 				volver_gestionar_directorios = false;
+				cout << "Estas logguedo como " << user_insert << endl;
 
 				while (!volver_gestionar_directorios)
 				{
@@ -396,6 +397,7 @@ void main()
 			{
 				system("cls");
 				volver_gestionar_tareas = false;
+				cout << "Estas logguedo como " << user_insert << endl;
 
 				while (!volver_gestionar_tareas)
 				{
@@ -441,6 +443,8 @@ void main()
 							}
 						}
 						cout << "Tarea Insertada!" << endl;
+						Sleep(3000); // Espera 5 SEG
+						system("cls"); //Limpia la terminal
 					}
 					if (user_tarea == '2')
 					{
@@ -454,10 +458,14 @@ void main()
 									cout << "Tu siguiente tarea es;" << endl;
 									string tarea = tareas[i].front();
 									cout << tarea << endl;
+									Sleep(4000); // Espera 5 SEG
+									system("cls"); //Limpia la terminal
 								}
 								else
 								{
 									cout << "No tienes Tareas Pendientes" << endl;
+									Sleep(3000); // Espera 5 SEG
+									system("cls"); //Limpia la terminal
 								}
 							}
 						}
@@ -478,11 +486,15 @@ void main()
 								if (tareas[i].size() != 0)
 								{
 									cout << "La proxima tarea sera: " << tareas[i].front() << endl << endl;
+									Sleep(3000); // Espera 5 SEG
+									system("cls"); //Limpia la terminal 
 								}
 								else
 								{
 									cout << "No quedan mas tareas" << endl;
 									cout << endl;
+									Sleep(3000); // Espera 5 SEG 
+									system("cls"); //Limpia la terminal 
 								}
 							}
 
@@ -497,7 +509,7 @@ void main()
 
 				}
 			}
-			if (user_select_option == '5') // Entra al menu de gestionar usuario
+			if (user_select_option == '5') // Cierra el panel
 			{
 
 				menu_principal = true;
