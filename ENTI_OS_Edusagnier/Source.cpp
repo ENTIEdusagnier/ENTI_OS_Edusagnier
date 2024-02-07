@@ -432,7 +432,7 @@ void main()
 						std::cin.ignore();
 
 						cout << "Que tarea queres insertar" << endl;
-						
+
 						std::getline(std::cin, tarea_insertar);
 
 						for (int i = 0; i < users.size(); i++)
@@ -453,12 +453,12 @@ void main()
 
 							if (users[i] == user_insert)
 							{
-								if (tareas[i].size() != 0)
+								if (tareas[i].size() != 0) // Verificacion de que si quedan tareas.
 								{
 									cout << "Tu siguiente tarea es;" << endl;
 									string tarea = tareas[i].front();
 									cout << tarea << endl;
-									Sleep(4000); // Espera 5 SEG
+									Sleep(2000); // Espera 5 SEG
 									system("cls"); //Limpia la terminal
 								}
 								else
@@ -473,21 +473,33 @@ void main()
 					}
 					if (user_tarea == '3')
 					{
-						cout << "La tarea completada:" << endl;
+
 						for (int i = 0; i < users.size(); i++)
 						{
 							if (users[i] == user_insert)
 							{
-								string tarea = tareas[i].front();
-								cout << tarea << endl;
 
-								tareas[i].pop();
-
-								if (tareas[i].size() != 0)
+								if (tareas[i].size() != 0)// Verificamos que no este vacio antes de sacar la ultima tarrea para que no de error
 								{
-									cout << "La proxima tarea sera: " << tareas[i].front() << endl << endl;
-									Sleep(3000); // Espera 5 SEG
-									system("cls"); //Limpia la terminal 
+									string tarea = tareas[i].front();
+									cout << "La tarea completada:" << endl;
+									cout << tarea << endl;
+									tareas[i].pop();
+
+									if (tareas[i].size() != 0)// Volvemos a verifica que no este vacio antes de sacar la ultima tarrea para que no de error.
+									{
+										cout << "La proxima tarea sera: " << tareas[i].front() << endl << endl;
+										Sleep(3000); // Espera 5 SEG
+										system("cls"); //Limpia la terminal 
+
+									}
+									else
+									{
+										cout << "No quedan mas tareas" << endl;
+										cout << endl;
+										Sleep(3000); // Espera 5 SEG 
+										system("cls"); //Limpia la terminal 
+									}
 								}
 								else
 								{
@@ -628,21 +640,32 @@ void main()
 					}
 					if (user_tarea == '3')
 					{
-						cout << "La tarea completada:" << endl;
 						for (int i = 0; i < users.size(); i++)
 						{
 							if (users[i] == user_insert)
 							{
-								string tarea = tareas[i].front();
-								cout << tarea << endl;
 
-								tareas[i].pop();
-
-								if (tareas[i].size() != 0)
+								if (tareas[i].size() != 0)// Verificamos que no este vacio antes de sacar la ultima tarrea para que no de error
 								{
-									cout << "La proxima tarea sera: " << tareas[i].front() << endl << endl;
-									Sleep(3000); // Espera 5 SEG
-									system("cls"); //Limpia la terminal 
+									string tarea = tareas[i].front();
+									cout << "La tarea completada:" << endl;
+									cout << tarea << endl;
+									tareas[i].pop();
+
+									if (tareas[i].size() != 0)// Volvemos a verifica que no este vacio antes de sacar la ultima tarrea para que no de error.
+									{
+										cout << "La proxima tarea sera: " << tareas[i].front() << endl << endl;
+										Sleep(3000); // Espera 5 SEG
+										system("cls"); //Limpia la terminal 
+
+									}
+									else
+									{
+										cout << "No quedan mas tareas" << endl;
+										cout << endl;
+										Sleep(3000); // Espera 5 SEG 
+										system("cls"); //Limpia la terminal 
+									}
 								}
 								else
 								{
