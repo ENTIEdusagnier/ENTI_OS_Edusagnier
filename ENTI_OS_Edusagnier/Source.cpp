@@ -19,6 +19,8 @@ void main()
 	string menu_gestionar_directorios[5] = { " Ver Directorios"," Crear Directorios"," Renombrar Directorios"," Eliminar Directorios"," Volver" };
 	string menu_gestionar_tareas[4] = { " Crear Tarea"," Mostrar Siguiente Tarea"," Completar Tarea"," Volver" };
 
+	string directorios = "C://entios/";
+
 	vector <string> users;
 	vector <string> passwords;
 
@@ -368,11 +370,17 @@ void main()
 					}
 					if (user_directory == '1') //Ver Directorio
 					{
-						//Ver Directorio
+						cout << directorios << endl;
 					}
 					if (user_directory == '2') //Crear Directorio
 					{
-						//Ver Directorio
+						string user_insert;
+						
+						cout << "En que path la quieres crear: " << "Directorio actual " << directorios << endl;
+
+						cin >> user_insert;
+
+
 					}
 					if (user_directory == '3') //Renombrar Directorio
 					{
