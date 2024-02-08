@@ -371,15 +371,103 @@ void main()
 					if (user_directory == '1') //Ver Directorio
 					{
 						cout << directorios << endl;
+
+						//La idea de la otra manera para hacer los directorios pero no es funcional del todo
+						/*
+						
+							vector<string> directorios;
+
+						directorios.push_back("1hola/2perro/3cerdo/"); // 0 C://hola/tarro/qweqwe C://
+						directorios.push_back("1tarro/2coro/3salmo/"); // 1 C://hola/tarro/perro
+
+
+						char numero_directorio = '\0'; // Valor nulo
+						bool direct_sacado = false;
+						int contador_dir = 0;
+						int posicion = 0;
+						string directorio_sacado;
+						int contador_subdirectorios = 0;
+						bool subdirectorio = false;
+
+						for (int d = 0; d < directorios.size(); d++)
+						{
+							directorio_sacado = directorios[d]; //Guardamos el valor de dentro del vector 
+
+							for (int y = 0; y < directorio_sacado.size(); y++)
+							{
+
+								direct_sacado = false;
+								string directorio_temp = ""; //Inizalizamos la estring donde alamacenara el directorio
+								string subdirectorio_sacado;
+								subdirectorio = false;
+								contador_subdirectorios = 0;
+
+								while (!direct_sacado)
+								{
+									for (int i = posicion; i < directorio_sacado.size(); i++)
+									{
+
+										if (directorio_sacado[i] >= char(49) && directorio_sacado[i] <= char(57))
+										{
+											numero_directorio = directorio_sacado[i];
+											cout << "Numero DIR:" << numero_directorio << endl;
+
+											if (d + 1 != directorios.size())
+											{
+
+												for (int l = 0; l < directorios[d + 1].size(); l++)
+												{
+													subdirectorio_sacado = directorios[d + 1];
+													if (subdirectorio_sacado[l] == numero_directorio)
+													{
+														contador_subdirectorios++;
+														subdirectorio = true;
+														cout << "CONTADOR DE SUB " << contador_subdirectorios << endl;
+													}
+													if (subdirectorio)
+													{
+
+													}
+												}
+											}
+										}
+
+										else if (directorio_sacado[i] != '/')
+										{
+											cout << directorio_sacado[i];
+											directorio_temp += directorio_sacado[i];
+											posicion = i;
+										}
+
+										else
+										{
+											direct_sacado = true;
+											posicion = i + 1;
+											cout << endl;
+											break; // Cuando saca la palabra cierra el for
+										}
+									}
+								}
+								cout << "C://" << directorio_temp << endl;
+
+							}
+						}
+						
+						
+						
+						*/
+
+
 					}
 					if (user_directory == '2') //Crear Directorio
 					{
 						string user_insert;
 						
-						cout << "En que path la quieres crear: " << "Directorio actual " << directorios << endl;
+						cout << "En que path la quieres crear: " << "Directorio actual; " << directorios << endl;
 
 						cin >> user_insert;
 
+						
 
 					}
 					if (user_directory == '3') //Renombrar Directorio
